@@ -1,0 +1,46 @@
+<?php require('template/header.phtml') ?>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" >
+    <div class="form-group">
+       
+
+        <label for="first_name">First name</label>
+        <input type="text" class="form-control" placeholder="Enter first name" name="first_name" value="<?php if (isset($_POST['first_nnme'])) echo
+        $_POST['first_name']; ?>" >
+
+        <label for="last_name">Last name</label>
+        <input type="text" class="form-control" placeholder="Enter last name" name="last_name" value="<?php if (isset($_POST['last_name'])) echo
+        $_POST['last_name']; ?>" >
+
+        <label for="email">E-mail</label><input type="text" class="form-control" placeholder="Enter E-mail" name="email" value="<?php if (isset($_POST['email'])) echo
+        $_POST['email']; ?>" >
+
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Enter Password" name="em" value="<?php if (isset($_POST['Password'])) echo
+        $_POST['password']; ?>" >
+
+       
+        <input type="submit" class="btn btn-default" value="Submit" name="submit">
+       
+</form>
+    
+<?php
+    if (isset($view->registerDataSet)) {
+        if (count($view->registerDataSet)>0) {
+            echo '<br><br>';
+            echo '<table class="table table-hover"><thead><tr>';
+            echo '<th>First name</th><th>Last name</th><th>Email</th></tr>';
+            echo '</thead><tbody>';
+            foreach ($view->registerDataSet as $registerData) {
+      
+                echo '<tr><td>' . $registerData->getFirstName() . '</td><td>' . $studentData->getEmail() . '</td></td></tr>';
+              }
+        echo '</tbody></table>';
+        } else {
+            echo 'No data matched the query';
+        }
+            
+    };
+?>
+
+<?php require('template/footer.phtml') ?>
